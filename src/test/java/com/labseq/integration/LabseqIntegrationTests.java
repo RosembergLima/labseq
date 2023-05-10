@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class LabseqIntegrationTest {
+public class LabseqIntegrationTests {
     
     @Autowired
     private TestRestTemplate restTemplate;
