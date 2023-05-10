@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Labseq Application</title>
+</head>
+
+<body>
+    <h1>Labseq Application</h1>
+    <p>Enter a value for n:</p>
+    <input type="number" id="n-value">
+    <button onclick="getLabseqValue()">Get Labseq Value</button>
+    <p id="result"></p>
+    <script>
+        function getLabseqValue() {
+            var n = document.getElementById("n-value").value;
+            if (!n || n < 0) {
+                const errorMessage = "Please enter a non-negative integer value for n";
+                document.getElementById("result").innerHTML = errorMessage;
+                return;
+            }
+            const endpointUrl = "http://localhost:8080/labseq/";
+            const errorMessage = "Failed to get Labseq value";
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", endpointUrl + n, true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById("result").innerHTML = "Labseq Value: " + xhr.responseText;
+                } else {
+                    document.getElementById("result").innerHTML = errorMessage;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>
